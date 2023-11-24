@@ -18,6 +18,9 @@ O contrato inteligente é responsável por gerenciar as operações relacionadas
 git clone https://github.com/briotisk/SoftwareLicenseNFT.git
 ```
 
+### 2. Execução dos testes unitários
+
+
 ### 5. Execução da interface de teste
 Abra a pasta ```interface``` e dê run no script ```interface_python.py```:
 

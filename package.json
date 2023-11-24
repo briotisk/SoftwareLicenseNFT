@@ -1,0 +1,60 @@
+{
+  "name": "software-license-nft",
+  "version": "1.0.0",
+  "description": "Este projeto consiste em um sistema de licenciamento de software que utiliza um contrato inteligente para implementar um NFT que visa facilitar a venda e distribuição de licenças de software de maneira descentralizada e segura.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briotisk/SoftwareLicenseNFT.git"
+  },
+  "keywords": [
+    "blockchain",
+    "smart contracts",
+    "ethereum",
+    "nft",
+    "software license"
+  ],
+  "authors": [
+    {
+      "name": "Carlos Nery Ribeiro",
+      "email": "carlosnribeiro@usp.br"
+    },
+    {
+      "name": "Felipe Cecato",
+      "email": "felipe.cecato@usp.br"
+    },
+    {
+      "name": "Gabriel Henrique Brioto",
+      "email": "gabriel_h_brioto@usp.br"
+    },
+    {
+      "name": "João Pedro Gonçalves Ferreira",
+      "email": "joaopedrogf@usp.br"
+    },
+    {
+      "name": "Leonardo Bellini dos Reis",
+      "email": "leo.bellini.reis@usp.br"
+    },
+    {
+      "name": "Matheus dos Santos Inês",
+      "email": "matheusdossantosines76@usp.br"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/briotisk/SoftwareLicenseNFT/issues"
+  },
+  "homepage": "https://github.com/briotisk/SoftwareLicenseNFT#readme",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.15",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.8.0",
+    "js-sha256": "^0.10.1"
+  }
+}

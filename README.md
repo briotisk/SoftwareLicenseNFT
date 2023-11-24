@@ -37,9 +37,6 @@ Ao executar o comando do passo anterior, a saída de sucesso esperada é:
 
 Note que a chave de licença, neste caso, é o valor da variável ```key```.
 
-### 2. Execução dos testes unitários
-
-
 ### 5. Execução da interface de teste
 Abra a pasta ```interface``` e dê run no script ```interface_python.py```:
 

@@ -3,12 +3,6 @@ var sha256 = require('js-sha256');
 
 contract('SoftwareLicense', ([owner, person1, person2, person3, person4, person5, person6, person7, person8, person9]) => {
 
-    let contractInstance;
-
-    before(async () => {
-        contractInstance = await SoftwareLicense.deployed();
-    });
-
     describe("Validação do contrato SoftwareLicense:", async () => {
 
       //OBS: No cenário 1 - verificar se o dinheiro está indo pra conta do dono do contrato
@@ -33,7 +27,7 @@ contract('SoftwareLicense', ([owner, person1, person2, person3, person4, person5
         assert.equal(licensePrice.toString(), bigNumberObj.toString(), "O preço da licença não corresponde o valor esperado");
         
         //chama a função de compra, armazena o seu retorno e verifica se a compra foi bem sucedida
-        purchaseOK = await meuContratoInstance.purchaseLicense({ from: person4, value: bigNumberObj });
+        purchaseOK = await meuContratoInstance.purchaseLicense({ from: person5, value: bigNumberObj });
         assert.isTrue(purchaseOK.receipt.status, "A função deveria retornar \"true\"");
         
       });

@@ -13,14 +13,6 @@ export default function App() {
   const licensePrice = ethers.parseEther("0.01");//colocar o preço da licença definido na hora do deploy
   const decimals = 18;//colocar o número de decimais do token(18 é o padrão)
 
-  const infuraUrl = 'https://goerli.infura.io/v3/a34ef793d1db401ebae443c3d92886d7';
-  
-  //const contractABI = [
-  //  "function purchaseLicense() external payable hasNotPurchasedLicense ",
-  //  "function printSoftwareKey() external view hasPurchasedLicense returns (bytes32)",
-  //  "event LicensePurchased(address indexed buyer, uint256 timestamp)"
-  //];//escrever aqui o ABI do contrato com todas as funções e eventos a serem usados
-
   async function checkMetaMaskInstalled() {
 
     // Verifica se a extensão ethereum está presente no window
@@ -67,35 +59,6 @@ export default function App() {
     }
   }
 
-  /*
-  async function connect() {
-    
-    // Cria uma instância ethers usando o provider ethereum
-    const provider = new ethers.BrowserProvider(window.ethereum, "any");
-  
-    try {
-
-      // Tenta obter as contas do MetaMask
-      const accounts = await provider.send('eth_requestAccounts', []);
-
-      //Recarrega a aplicação no caso emm que o usuário troca de rede 
-      provider.on("network", (newNetwork, oldNetwork) => {
-        if (oldNetwork) window.location.reload();
-      });
-
-      setIsConnected(true);
-
-    } catch (error) {
-
-      // Se o MetaMask não estiver instalado ou se o usuário não der permissão, será lançado um erro
-      console.error('Erro ao acessar contas do MetaMask:', error.message);
-
-      setIsConnected(false);
-
-    }
-
-  }
-*/
   async function purchaseLicense() {
 
     try {

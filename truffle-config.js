@@ -13,11 +13,12 @@ module.exports = {
     },
 
     goerli: {
+      skipDryRun: true,
       provider: new HDWalletProvider({
         mnemonic: {
           phrase: process.env.SECRET, 
         },
-        providerOrUrl: "https://goerli.infura.io/v3/a34ef793d1db401ebae443c3d92886d7"
+        providerOrUrl: "https://ethereum-goerli.publicnode.com"
       }),
       network_id: 5,
     }

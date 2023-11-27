@@ -5,7 +5,6 @@ contract('SoftwareLicense', ([owner, person1, person2, person3, person4, person5
 
     describe("Validação do contrato SoftwareLicense:", async () => {
 
-      //OBS: No cenário 1 - verificar se o dinheiro está indo pra conta do dono do contrato
       it('Cenário 1', async () => {
         
         /**

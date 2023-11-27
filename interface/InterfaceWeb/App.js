@@ -107,10 +107,14 @@ export default function App() {
       const signerAddress = (await signer).getAddress();
     
       const tx = await contract.purchaseLicense({from: signerAddress, value: licensePrice});
-      await tx.wait();
+      const receipt = await tx.wait();
+
+      if (receipt.status === 1) {
+        alert("Transação bem-sucedida: A licença foi adquirida com sucesso!");
+      }
     
     } catch (error) {
-      
+
       if(error.message.substr(0, 18) ==  "insufficient funds"){
 
         alert('Erro ao enviar a transação: Parece que você não tem fundos suficientes = (');
@@ -127,12 +131,31 @@ export default function App() {
 
   async function printLicense() {
 
-    const provider = new ethers.BrowserProvider(window.ethereum, "any");
-    const contract = new ethers.Contract(contractAddress, contractABI, provider);
-    const tx = await contract.printLicense();
+    try {
+      const metamaskProvider = new ethers.BrowserProvider(window.ethereum, "any");
+      const signer = await metamaskProvider.getSigner();
+      
+      // Crie uma instância do contrato usando o Signer da MetaMask
+      const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
-    console.log(tx);
-    return tx;
+      // Chamar a função printSoftwareKey
+      const key = await contract.printSoftwareKey();
+
+      console.log("Chave de software:", key);
+      alert("Chave de software: " + key);
+    } catch (error) {
+
+      if(error.message.substr(0, 18) ==  "insufficient funds"){
+
+        alert('Erro ao enviar a transação: Parece que você não tem fundos suficientes = (');
+
+      }else if(error.message.substr(0, 18) ==  "execution reverted"){
+
+        alert('Erro ao enviar a transação: Você precisa ter comprado a licença antes = (');
+
+      }
+
+    }
 
   }
 

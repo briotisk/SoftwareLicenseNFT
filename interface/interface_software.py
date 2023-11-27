@@ -2,13 +2,13 @@ import tkinter as tk
 from tkinter import messagebox
 
 # Lista de códigos aceitáveis
-codigos_aceitaveis = ['123', '456', '789']
+codigo = "0xc693279643b8cd5d248172d9c22cb7cf4ed163a3c98c8a3f69c2717edd3eacb7"
 
 # Função chamada quando o botão é pressionado
 def verificar_codigo():
     codigo_digitado = entry.get()
 
-    if codigo_digitado in codigos_aceitaveis:
+    if codigo_digitado == codigo:
         messagebox.showinfo('Sucesso', 'Código válido! Acesso ao MathGenius Pro permitido...')
     else:
         messagebox.showerror('Erro', 'Código inválido. Tente novamente.')

@@ -16,7 +16,7 @@ contract SoftwareLicense {
         _;
     }
 
-    modifier hasPurchasedLicense() {
+    modifier hasPurchasedLicense () {
         require(hasLicense[msg.sender], "You need to purchase a license first");
         _;
     }

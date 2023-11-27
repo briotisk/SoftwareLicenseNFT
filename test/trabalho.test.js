@@ -27,7 +27,7 @@ contract('SoftwareLicense', ([owner, person1, person2, person3, person4, person5
         assert.equal(licensePrice.toString(), bigNumberObj.toString(), "O preço da licença não corresponde o valor esperado");
         
         //chama a função de compra, armazena o seu retorno e verifica se a compra foi bem sucedida
-        purchaseOK = await meuContratoInstance.purchaseLicense({ from: person5, value: bigNumberObj });
+        purchaseOK = await meuContratoInstance.purchaseLicense({ from: person3, value: bigNumberObj });
         assert.isTrue(purchaseOK.receipt.status, "A função deveria retornar \"true\"");
         
       });
@@ -144,39 +144,6 @@ contract('SoftwareLicense', ([owner, person1, person2, person3, person4, person5
         }
         
       });
-
-        /**
-         *      Testar a função withdrawFunds() quando o owner do contrato a executa (deve realizar a transferência)
-         */
-
-        /**
-         *      Testar a função withdrawFunds() quando alguém além do owner do contrato a executa (deve acionar o 'revert')
-         */
-
-/*
-Exemplo de teste onde deve haver o acionamento da cláusula 'revert':
-
-    it('Deve acionar um revert', async () => {
-
-        const meuContratoInstance = await MeuContrato.new();
-
-        try {
-          // Chame uma função que deve acionar um revert
-          await meuContratoInstance.funcaoQueDeveReverter({ from: accounts[0] });
-
-          // Se a função não acionar um revert, falhe no teste
-          assert.fail('A função não acionou um revert');
-        } catch (error) {
-          // Verifique se a mensagem de erro contém a string esperada
-          assert.include(
-            error.message,
-            'revert',
-            'A função não acionou um revert como esperado'
-          );
-        }
-    });
-
-*/
 
     });
 

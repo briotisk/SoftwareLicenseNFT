@@ -1,27 +1,18 @@
 const SoftwareLicense = artifacts.require("SoftwareLicense");
+const { ethers } = require("ethers");
 
-module.exports = function(deployer) {
-  deployer.deploy(SoftwareLicense, 20, "LICENSE");
-};
+//deploy de testes
+//module.exports = function(deployer) {
+//  deployer.deploy(SoftwareLicense, 20, "LICENSE");
+//};
+//
+
+//deploy na testenet goerli
+
+let inputReader = require('readline-sync');
+let licensePrice = inputReader.question("Digite o preço da licença em ETH: ");
+let licenseSeed = inputReader.question("Digite a string que servirá de seed para a licença: ");
 
 module.exports = function(deployer, network) {
-  
-  //deploy na rede de testes 
-  if (network == "development") {
-
-    deployer.deploy(SoftwareLicense, 20, "LICENSE");
-  //deploy na testnet pública
-  } else {
-
-    let inputReader = require('readline-sync');
-    let licensePriceString = inputReader.question("Digite o preço da licença em gwei: ");
-    let licenseSeed = inputReader.question("Digite a string que servirá de seed para a licença: ");
-
-    let BN = web3.utils.BN;
-    const licensePrice = new BN(licensePriceString);
-
-    deployer.deploy(SoftwareLicense, licensePrice, licenseSeed);
-
-  }
-
+  deployer.deploy(SoftwareLicense, ethers.parseUnits(licensePrice, 18), licenseSeed);
 }

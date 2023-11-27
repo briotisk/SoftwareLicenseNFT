@@ -11,11 +11,6 @@ contract SoftwareLicense {
 
     event LicensePurchased(address indexed buyer, uint256 timestamp);
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Only the owner can call this function");
-        _;
-    }
-
     modifier hasNotPurchasedLicense() {
         require(!hasLicense[msg.sender], "You already have a license");
         _;
@@ -44,11 +39,6 @@ contract SoftwareLicense {
 
         // Emit an event
         emit LicensePurchased(msg.sender, block.timestamp);
-    }
-
-    function withdrawFunds() external onlyOwner {
-        // Allow the owner to withdraw the contract balance
-        payable(owner).transfer(address(this).balance);
     }
 
     function printSoftwareKey() external view hasPurchasedLicense returns (bytes32) {

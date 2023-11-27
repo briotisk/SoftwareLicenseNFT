@@ -9,9 +9,11 @@ export default function App() {
   const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   
-  const contractAddress = "0x546d54521644cAf99e8858f37CDb2dfFcC600599";//colocar o endereço do contrato obtido no deploy
-  const licensePrice = "0.0125";//colocar o preço da licença definido na hora do deploy
+  const contractAddress = "0xda2a1c35227d511ed7d3150b1a6758f0fca1f0aa";//colocar o endereço do contrato obtido no deploy
+  const licensePrice = ethers.parseEther("0.01");//colocar o preço da licença definido na hora do deploy
   const decimals = 18;//colocar o número de decimais do token(18 é o padrão)
+
+  const infuraUrl = 'https://goerli.infura.io/v3/a34ef793d1db401ebae443c3d92886d7';
   
   //const contractABI = [
   //  "function purchaseLicense() external payable hasNotPurchasedLicense ",
@@ -97,40 +99,29 @@ export default function App() {
   async function purchaseLicense() {
 
     try {
-      const provider = new ethers.BrowserProvider(window.ethereum, "any");
-      const signer = provider.getSigner();
-
-      // Primeiro, crie o contrato usando o ABI e o endereço
-      const contract = new ethers.Contract(contractAddress, contractABI, provider);
-
-      // Em seguida, conecte o contrato ao signer
-      const contractSigner = contract.connect(signer);
-
-      // Verifique se a função purchaseLicense existe no contrato
-      if (!contractSigner.purchaseLicense) {
-          console.error("A função purchaseLicense não foi encontrada no contrato.");
-          return;
-      }
-
-      // Agora você pode chamar a função purchaseLicense
-      const tx = await contractSigner.purchaseLicense({ value: ethers.parseUnits(licensePrice, decimals) });
-
-      // Adicione um log para o hash da transação
-      console.log("Transação enviada. Hash da transação:", tx.hash);
-
-      // Agora você pode retornar o objeto de transação
-      return tx;
-  } catch (error) {
-      console.error("Erro durante a execução da função purchaseLicense:", error);
-  }
-    //onst provider = new ethers.BrowserProvider(window.ethereum, "any");
-    //onst signer = provider.getSigner();
-    //onst contract = new ethers.Contract(contractAddress, contractABI, provider);
-    //onst contractSigner = contract.connect(signer);
-    //onst tx = await contractSigner.purchaseLicense({ value: ethers.parseUnits(licensePrice, decimals) });
+      const metamaskProvider = new ethers.BrowserProvider(window.ethereum, "any");
+      const signer = await metamaskProvider.getSigner();
     
-    //console.log(tx);
-    //return tx;
+      // Crie uma instância do contrato usando o Signer da MetaMask
+      const contract = new ethers.Contract(contractAddress, contractABI, signer);
+      const signerAddress = (await signer).getAddress();
+    
+      const tx = await contract.purchaseLicense({from: signerAddress, value: licensePrice});
+      await tx.wait();
+    
+    } catch (error) {
+      
+      if(error.message.substr(0, 18) ==  "insufficient funds"){
+
+        alert('Erro ao enviar a transação: Parece que você não tem fundos suficientes = (');
+
+      }else if(error.message.substr(0, 18) ==  "execution reverted"){
+
+        alert('Erro ao enviar a transação: Parece que você já possui a licença = )');
+
+      }
+      
+    }
 
   }
 

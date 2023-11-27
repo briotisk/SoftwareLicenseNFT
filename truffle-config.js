@@ -17,7 +17,7 @@ module.exports = {
         mnemonic: {
           phrase: process.env.SECRET, 
         },
-        providerOrUrl: "https://ethereum-goerli.publicnode.com"
+        providerOrUrl: "https://goerli.infura.io/v3/a34ef793d1db401ebae443c3d92886d7"
       }),
       network_id: 5,
     }

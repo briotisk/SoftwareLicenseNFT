@@ -55,7 +55,9 @@
     "@truffle/hdwallet-provider": "^2.1.15",
     "dotenv": "^16.3.1",
     "ethers": "^6.8.1",
+    "ganache-cli": "^6.12.2",
     "js-sha256": "^0.10.1",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "truffle": "^5.11.5"
   }
 }

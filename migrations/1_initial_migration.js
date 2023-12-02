@@ -3,7 +3,7 @@ const { ethers } = require("ethers");
 
 //deploy de testes
 /*module.exports = function(deployer) {
-  deployer.deploy(SoftwareLicense, 20, "LICENSE");
+  deployer.deploy(SoftwareLicense, 0, "");
 };
 */
 

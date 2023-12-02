@@ -193,6 +193,12 @@ export default function App() {
         </View>
       )}
 
+      {isConnected &&(
+        <View style={styles.metaMaskText}>
+          <Text style={styles.metaMaskText}>Preço da licença: 0.02 ETH</Text>
+        </View>
+      )}
+
     </View>
   );
   

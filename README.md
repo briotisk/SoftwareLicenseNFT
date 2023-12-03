@@ -173,16 +173,16 @@ Assim, na interface web, basta dar permissão para que ela se conecte à Metamas
 
 ### 6. Execução da interface de teste
 
-Navegue até a pasta ```interface``` e execute o script ```interface_python.py```:
+Navegue até a pasta ```interface``` e execute o script ```interface_software.py```:
 
 ```
-python interface_python.py
+python interface_software.py
 ```
 
 Ou ainda:
 
 ```
-python3 interface_python.py
+python3 interface_software.py
 ```
 
 Em seguida uma janela se abrirá, insira a chave de licença recebida no contrato inteligente e veja que uma mensagem é exibida, informando se a chave é válida ou não.
